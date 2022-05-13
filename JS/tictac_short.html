@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- http://127.0.0.1:5500/index.html -->
+<!-- VSCode + ritwickdey.LiveServer -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { font-family: Arial, sans-serif; font-size: 1.4rem;}
+        b {
+            display: inline-block;
+            width: 35px;
+            background-color: #9ce;
+            margin: 1px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<b>1</b><b>2</b><b>3</b><br/>
+<b>4</b><b>&nbsp;</b><b>6</b><br/>
+<b>7</b><b>8</b><b>9</b>
+
+<script>
+    function chColor(){
+        this.style.backgroundColor = "red";
+    }
+
+    document.querySelectorAll("b").forEach(
+        item => {item.addEventListener("click", chColor)}
+    )
+
+</script>
+</body>
+</html>

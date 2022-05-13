@@ -7,7 +7,7 @@ Random notes from web
 
     <div>CLICK ME</div>
     <script>
-        function chColor() {this.style.color = "red";}
+        function chColor() {this.style.color = "red";}  //dont use arrow here
         document.querySelector("div").addEventListener("click", chColor)
     </script>
   

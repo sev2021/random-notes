@@ -10,9 +10,9 @@
         * { font-family: Arial, sans-serif; font-size: 1.4rem;}
         b {
             display: inline-block;
-            width: 35px;
+            width: 38px;
             background-color: #9ce;
-            margin: 1px;
+            margin: 1px -3px;
             text-align: center;
         }
     </style>
@@ -20,18 +20,60 @@
 </head>
 <body>
 
-<b>1</b><b>2</b><b>3</b><br/>
-<b>4</b><b>&nbsp;</b><b>6</b><br/>
-<b>7</b><b>8</b><b>9</b>
+<b f="0">&nbsp;</b>
+<b f="1">&nbsp;</b>
+<b f="2">&nbsp;</b><br/>
+<b f="3">&nbsp;</b>
+<b f="4">&nbsp;</b>
+<b f="5">&nbsp;</b><br/>
+<b f="6">&nbsp;</b>
+<b f="7">&nbsp;</b>
+<b f="8">&nbsp;</b>
 
 <script>
-    function chColor(){
-        this.style.backgroundColor = "red";
+    let arr = [0,0,0,0,0,0,0,0,0];
+    let arrWin = [7,56,73,84,146,273,292,448]; //bitwise
+    let move = 1;
+    let x_s = 0;
+    let o_s = 0;
+    let clicked;
+    let finalResult = "This time its draw!";
+
+    // game starts here
+    function playGame(){
+        clicked = parseInt(this.getAttribute('f'));
+        if(arr[clicked] == 1) return;  // only one click per field
+
+        arr[clicked] = 1;  //  addin next move
+        move%2? o_s += 2 ** clicked: x_s += 2 ** clicked;
+        this.innerHTML = ["X", "O"][move%2];
+
+        arrWin.forEach(  // check winning results
+            item => {
+                if ((x_s & item) == item) {
+                    finalResult = "This time X wins!";
+                    move = 9;
+                }
+                if ((o_s & item) == item)  {
+                    finalResult = "This time O wins!";
+                    move = 9;
+                }
+            }
+        )
+
+        // final steps
+        if(move++ > 8) {
+            console.log(finalResult);
+            arr = [1,1,1,1,1,1,1,1,1];
+        }
+        
+        //this.style.backgroundColor = "red";
     }
 
+
     document.querySelectorAll("b").forEach(
-        item => {item.addEventListener("click", chColor)}
-    )
+        item => item.addEventListener("click", playGame)
+    );
 
 </script>
 </body>

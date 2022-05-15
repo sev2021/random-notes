@@ -7,7 +7,12 @@ Random notes from web
 
     <div>CLICK ME</div>
     <script>
-        function chColor() {this.style.color = "red";}  //dont use arrow here
-        document.querySelector("div").addEventListener("click", chColor)
+        function function_name() {this.style.color = "red";}  //dont use arrow here
+        document.querySelector("div").addEventListener("click", functon_name)
     </script>
   
+  AddEventListener to multiple elements:
+  
+      document.querySelectorAll("div").forEach(
+        item => item.addEventListener("click", functon_name
+      );

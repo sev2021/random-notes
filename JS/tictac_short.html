@@ -73,9 +73,11 @@
     function makeRed(fieldWin){
         console.log(fieldWin);
         document.querySelectorAll("b").forEach(
-            item => {
-                cons = (2**item.getAttribute('f'))   //bitwise check
-                if((fieldWin & cons) == cons) item.style.backgroundColor = "red"
+            (item, index) => {
+                fieldBit = (2**index)   //bitwise check
+                if((fieldWin & fieldBit) == fieldBit) {
+                    item.style.backgroundColor = "red"
+                }
             }
         );
     }

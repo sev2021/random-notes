@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- http://127.0.0.1:5500/index.html -->
-<!-- VSCode + ritwickdey.LiveServer -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,13 +48,15 @@
 
         arrWin.forEach(  // check winning results
             item => {
-                if ((x_s & item) == item) {
+                if ((x_s & item) == item) {  //bitwise check
                     finalResult = "This time X wins!";
                     move = 9;
+                    makeRed(item);
                 }
-                if ((o_s & item) == item)  {
+                if ((o_s & item) == item)  {  //bitwise check
                     finalResult = "This time O wins!";
                     move = 9;
+                    makeRed(item);
                 }
             }
         )
@@ -68,6 +68,16 @@
         }
         
         //this.style.backgroundColor = "red";
+    }
+
+    function makeRed(fieldWin){
+        console.log(fieldWin);
+        document.querySelectorAll("b").forEach(
+            item => {
+                cons = (2**item.getAttribute('f'))   //bitwise check
+                if((fieldWin & cons) == cons) item.style.backgroundColor = "red"
+            }
+        );
     }
 
 

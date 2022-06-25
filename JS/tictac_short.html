@@ -44,17 +44,17 @@
 
         arr[clicked] = 1;  //  addin next move
         move%2? o_s += 2 ** clicked: x_s += 2 ** clicked;
-        this.innerHTML = ["X", "O"][move%2];
+        this.innerHTML = ["O", "X"][move%2];
 
         arrWin.forEach(  // check winning results
             item => {
                 if ((x_s & item) == item) {  //bitwise check
-                    finalResult = "This time X wins!";
+                    finalResult = "This time O wins!";
                     move = 9;
                     makeRed(item);
                 }
                 if ((o_s & item) == item)  {  //bitwise check
-                    finalResult = "This time O wins!";
+                    finalResult = "This time X wins!";
                     move = 9;
                     makeRed(item);
                 }

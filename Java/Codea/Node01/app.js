@@ -1,7 +1,7 @@
 // Require in trails module from trails.js
 const trails = require('./trails.js');
 // Require in util module here
-
+const util = require('util');
 // Simulate database call to search trails module for specified trail
 const getTrailDistance = (trail, callback) => {
   return setTimeout(() => {
@@ -29,4 +29,14 @@ function callback (error, trailData) {
 getTrailDistance('North Country', callback)
 
 // Promisfy below!
+const getTrailDistancePromise = util.promisify(getTrailDistance);
 
+getTrailDistancePromise('North Country')
+  .then((foundTrail) => {      
+    const nickname = foundTrail.nickname;
+    const mi = foundTrail.miles; 
+    console.log(`The ${nickname} is ${mi} miles long!`);
+  })
+  .catch((error) => {
+      console.log('Trail not found', error);
+  });

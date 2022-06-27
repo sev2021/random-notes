@@ -6,7 +6,7 @@ const util = require('util');
 const getTrailDistance = (trail, callback) => {
   return setTimeout(() => {
     if (trails.hasOwnProperty(trail)) {    
-      const foundTrail = trails[trail];    
+      const foundTrail = trails[trail];  //////// check:   hasOwnProperty.trail
       callback(null, foundTrail)
     } else {
       callback(new Error('Trail not found!'))
@@ -20,8 +20,8 @@ function callback (error, trailData) {
     console.error(error.message)
     process.exit(1)
   } else {
-    const mi = trailData.miles;   
-    const nickname = trailData.nickname;
+    const mi = trailData.miles;   //////check: trailData[miles]
+    const nickname = trailData.nickname;   ////// as above
     console.log(`The ${nickname} is ${mi} miles long!`)
   }
 }
@@ -34,7 +34,7 @@ const getTrailDistancePromise = util.promisify(getTrailDistance);
 getTrailDistancePromise('North Country')
   .then((foundTrail) => {      
     const nickname = foundTrail.nickname;
-    const mi = foundTrail.miles; 
+    const mi = foundTrail.miles;
     console.log(`The ${nickname} is ${mi} miles long!`);
   })
   .catch((error) => {

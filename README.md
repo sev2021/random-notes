@@ -16,3 +16,13 @@ Random notes from web
       document.querySelectorAll("div").forEach(
         item => item.addEventListener("click", functon_name
       );
+
+  Node / Electron html server:
+  
+      const express = require('express');
+      const app = express();
+      app.get('/', (req,res) => {res.send("<p>para</p>")});
+      app.get('/home', (req,res) => {res.send("<p>home</p>")});
+      app.listen(3000);
+      
+      

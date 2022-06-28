@@ -37,9 +37,20 @@ var webCode = `<!DOCTYPE html>
 </html>`
 
 var http= require('http');
-var os = require('os');
 var server = http.createServer((req, res)=>{
     res.writeHead(200, {"Content-Type": 'text/html'});  // must be html or not rendered
     res.end(webCode);
 });
 server.listen(8080, "127.0.0.1");  // "127.0.0.1" is optional
+
+/* Even simpler way with electron 
+* 
+* const express = require('express');
+* const app = express();
+* app.get('/', (req,res) => {res.send("<p>para</p>")});
+* app.get('/home', (req,res) => {res.send("<p>home</p>")});
+* app.listen(3000);
+* 
+* 
+*/
+

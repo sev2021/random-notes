@@ -25,7 +25,11 @@ Random notes from web
       app.get('/home', (req,res) => {res.send("<p>home</p>")});
       app.listen(3000);
       
-  Asynchronous Node in action:
+  Asynchronous Node in action ( '.' = __dirname = process.cwd() ):
   
-      function asyncFunc (err, files) { console.log(files); };
+      function asyncFunc (error, files) { console.log(files); };
       require('fs').readdir('.', asyncFunc);
+      
+  ...or
+  
+      require('fs').readdir('.', (error, files) => { console.log(files); });

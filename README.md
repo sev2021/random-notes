@@ -33,6 +33,7 @@ Random notes from web
   ...or
   
       require('fs').readdir('.', (error, files) => { console.log(files); });
+      // A (error, files) is an example of error-first callback
       
   It works from Node terminal (must have calback element ()=>{}):
   

@@ -33,3 +33,7 @@ Random notes from web
   ...or
   
       require('fs').readdir('.', (error, files) => { console.log(files); });
+      
+  It works from Node terminal (must have calback element ()=>{}):
+  
+      require('fs').mkdir("dir_name', ()=>{});

@@ -38,3 +38,5 @@ Random notes from web
   
       require('fs').mkdir("dir_name', ()=>{});
       fs.readdir('.', console.log);
+      fs.readFile('aa.txt', (err, data)=>{var fileData = data.toString();})
+      

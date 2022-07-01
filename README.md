@@ -37,3 +37,4 @@ Random notes from web
   It works from Node terminal (must have calback element ()=>{}):
   
       require('fs').mkdir("dir_name', ()=>{});
+      fs.readdir('.', console.log);

@@ -33,11 +33,21 @@ Random notes from web
   ...or
   
       require('fs').readdir('.', (error, files) => { console.log(files); });
-      // A (error, files) is an example of error-first callback
+      // With parameters (error, files) are called error-first callback
       
   It works from Node terminal (must have calback element ()=>{}):
   
       require('fs').mkdir("dir_name', ()=>{});
       fs.readdir('.', console.log);
       fs.readFile('aa.txt', (err, data)=>{var fileData = data.toString();})
+      
+  Synchronous file reading is resource consuming (CPU, RAM) and limitted to 512MB (0x1fffffe8 characters):
+  
+      fs.readFile('aa.txt', (err, x)=>{console.log(x.toString());})
+      
+  Asynchronous file reading streams data line after line, without any limits:
+  
+      var inpu = fs.createReadStream('qq.txt');
+      require('readline').createInterface(inpu).on('line', console.log);
+  
       

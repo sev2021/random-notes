@@ -1,3 +1,4 @@
+// find highest number of random inputs
 var inpArr = [];
 var arrInd = 0;
 var topArr = 0;

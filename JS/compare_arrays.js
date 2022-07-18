@@ -1,23 +1,38 @@
 // preliminary snipped for data compartion
-// Arrays
+// Arrays + Objects + Objects of arrays
 
 function areEqual(x, y){
-	if(x.length != y.length){return false};
+	if(x instanceof Array || y instanceof Array){
+		if(x.length != y.length){return false};
+		
+		let indSum = 0;
+		
+		x.forEach(e => {
+			indSum += y.indexOf(e);
+		});
+		if((x.length * (x.length - 1) / 2) == indSum) {return true};
+		return false;
+	}
 	
-	let indSum = 0;
+	else if(x instanceof Object || y instanceof Object){
+		console.log('object ' + Object.keys(x) + "  " + Object.keys(y));	
+		if(Object.keys(x).length != Object.keys(y).length){return false};
+		
+		let fromEach = true;
+		Object.keys(x).forEach(e => {
+			console.log(x[e] + ".." + y[e] + ".." + (x[e] != y[e]));
+			if(String(x[e]) != String(y[e])){  // TRICK TO COMPARE ARRAYS
+				fromEach = false;
+			}
+		});
+		return fromEach;
+	}
 	
-	x.forEach(e => {
-		indSum += y.indexOf(e);
-		console.log(indSum);
-	});
-	if((x.length * (x.length - 1) / 2) == indSum) {return true};
-	return false;
+	else {return false;}
 }
 
-// TEST below
-
-console.log(areEqual([3,4],[4,3]))
-console.log(areEqual([3,14],[4,3]))
-console.log(areEqual([3,42,5],[5,42,3]))
-console.log(areEqual([3,3,5],[3,5,21]))
-console.log(areEqual([3,42,13,23],[3,23,13,42]))
+console.log(areEqual([{a:3},{b:4}],[{a:'3'},{b:'4'}])) //  false 
+console.log(areEqual({a:[2,3],b:[4]},{b:[4],a:[2,3]})) // true 
+console.log(areEqual({adam:3, laura:4},{laura:4, adam:3})) // true; 
+console.log(areEqual({adam:3, laura:4, maisie:2},{adam:3, laura:4})) // false 
+console.log(areEqual({a:3},{b:4},{b:3},{a:4})) // false

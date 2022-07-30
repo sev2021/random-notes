@@ -1,5 +1,6 @@
 // preliminary snipped for data compartion
 // Arrays + Objects + Objects of arrays
+// task from Moodle
 
 function areEqual(x, y){
 	if(x instanceof Array || y instanceof Array){

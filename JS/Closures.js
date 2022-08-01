@@ -3,15 +3,17 @@ function createCounter() {
   let i = 0; 
   function increment(){i++;}
   function getCounterValue(){return i;}
-  return {increment, getCounterValue} /* return {<function_name>} makes Closure-function */
+  return {increment, getCounterValue}
 }
 
-/* 
+/* HOW TO USE IT:
+
 const a= createCounter();
-a.getCounterValue() //0
+a.getCounterValue() // returns 0
 a.increment()
 a.increment()
-a.getCounterValue() //2
+a.getCounterValue() // returns 2
+
 */
 
 /*

@@ -22,7 +22,7 @@ function areEqual(x, y){
 		let fromEach = true;
 		Object.keys(x).forEach(e => {
 			console.log(x[e] + ".." + y[e] + ".." + (x[e] != y[e]));
-			if(String(x[e]) != String(y[e])){  // TRICK TO COMPARE ARRAYS
+			if(String(x[e]) != String(y[e])){  // convert arrays to Strings to compare them :)
 				fromEach = false;
 			}
 		});

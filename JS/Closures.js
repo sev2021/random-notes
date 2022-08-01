@@ -1,9 +1,11 @@
 /* https://medium.com/swlh/javascript-closures-and-react-4c0e3f705a6c */
+/* "return" with values {<function1_name>, <function2_name>, <function3_name>...} */
+
 function createCounter() {
   let i = 0; 
   function increment(){i++;}
   function getCounterValue(){return i;}
-  return {increment, getCounterValue}
+  return {increment, getCounterValue}   // RETURNING FUNCTIONS INSIDE {} ALLOWS TO USE THEM !!
 }
 
 /* HOW TO USE IT:

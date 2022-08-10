@@ -11,13 +11,15 @@ Random notes from web
         document.querySelector("div").addEventListener("click", functon_name)
     </script>
   
-  AddEventListener to multiple elements:
+  AddEventListener to multiple elements (and then use them in callback function):
   
       document.querySelectorAll("div").forEach(
-        item => item.addEventListener("click", functon_name
+        item => item.addEventListener("click", callback_function);
       );
+      
+      function callback_function (event) { event.target.innerHTML = "THIS IS TARGET" }
 
-  Node / Electron html server:
+  Node / Express html server:
   
       const express = require('express');
       const app = express();
